@@ -12,7 +12,5 @@ public class ControleColisao {
 		} else {
 			return false;
 		}
-
 	}
-
 }
