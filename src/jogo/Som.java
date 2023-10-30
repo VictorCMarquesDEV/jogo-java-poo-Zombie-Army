@@ -17,6 +17,7 @@ public class Som {
 	public static void stop() {
 		if(Som.musica != null) {
 			musica.stop();
+			int i;
 		}
 	}
 }
