@@ -57,7 +57,5 @@ public class Projetil extends Sprite {
 			update();
 			movendo = false;
 		}
-
 	}
-
 }
