@@ -47,11 +47,9 @@ public class ControleTiro {
 				inimigo.setLife(inimigo.getLife()-player.getAtaque());
 			}
 		}
-		
 	}
 
 	private void somDisparo() {
 		new Sound(URL.audio("tiro.wav")).play();
 	}
-
 }
