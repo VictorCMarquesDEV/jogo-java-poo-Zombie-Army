@@ -12,7 +12,6 @@ public class Projetil extends Sprite {
 	protected int caminho = STOP;
 	protected boolean movendo = false;
 	protected int direcao = 3;
-	int i;
 
 	public Projetil(double x, double y, int caminho) {
 		super(URL.sprite("tiro.png"), 16);
