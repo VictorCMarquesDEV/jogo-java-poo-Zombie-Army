@@ -43,7 +43,9 @@ public class Cenario {
 	protected void run() {
 		while (true) {
 
-			player.controlar(janela, teclado, pocaoCura);
+			player.controlar(janela, teclado);
+			pocaoCura.estatico(player);
+			player.imovel();
 			player.caminho(cena);
 
 			cena.moveScene(player);

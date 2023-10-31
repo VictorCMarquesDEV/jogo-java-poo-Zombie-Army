@@ -6,6 +6,7 @@ import controle.ControleColisao;
 import entidades.Player;
 import entidades.Zumbi;
 import jplay.Sprite;
+import jplay.TileInfo;
 import jplay.URL;
 
 public class PocaoCura extends Sprite{
@@ -16,6 +17,7 @@ public class PocaoCura extends Sprite{
 	Random aleatorioDy = new Random();
 	
 	ControleColisao controle = new ControleColisao();
+	TileInfo tile = new TileInfo();
 	
 	public PocaoCura(String filename, int numFrames, double x, double y) {
 		super(URL.sprite(filename), numFrames);
@@ -41,5 +43,24 @@ public class PocaoCura extends Sprite{
 		}
 	}
 	
-	
+	public void estatico(Player player) {
+		if(player.getMovendo()) {
+			if(player.x > 510 && player.x < 514 && ControleColisao.colisao(player, player.getTile()) == false) {
+				if(player.getDirecao() == 1) {
+					this.x += player.getVelocidade();
+				} 
+				if(player.getDirecao() == 2) {
+					this.x -= player.getVelocidade();
+				}
+			}
+			if(player.y > 382 && player.y < 386 && ControleColisao.colisao(player, player.getTile()) == false) {
+				if(player.getDirecao() == 4) {
+					this.y += player.getVelocidade();
+				} 
+				if(player.getDirecao() == 5) {
+					this.y -= player.getVelocidade();
+				}
+			}
+		}
+	}
 }
