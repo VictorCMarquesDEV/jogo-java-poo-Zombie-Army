@@ -1,5 +1,6 @@
 package mapConfig;
 
+import combate.PocaoCura;
 import controle.ControleJogo;
 import entidades.Boss;
 import entidades.Player;
@@ -19,6 +20,7 @@ public class Cenario {
 	protected Zumbi zumbi[];
 	protected Boss boss;
 	protected ControleJogo controleJogo;
+	protected PocaoCura pocaoCura;
 
 	public Cenario(Window window, String filename, String filenameM) {
 		janela = window;
@@ -27,6 +29,7 @@ public class Cenario {
 		cena.loadFromFile(URL.scenario(filename));
 		player = new Player(640, 350, 250);
 		zumbi = new Zumbi[30];
+		pocaoCura = new PocaoCura("pocao.png",1,650,370);
 		for (int i = 0; i < zumbi.length; i++) {
 			zumbi[i] = new Zumbi(30000, 30000, "zumbi.png", 1500, 2);
 		}
@@ -40,7 +43,7 @@ public class Cenario {
 	protected void run() {
 		while (true) {
 
-			player.controlar(janela, teclado);
+			player.controlar(janela, teclado, pocaoCura);
 			player.caminho(cena);
 
 			cena.moveScene(player);
@@ -48,7 +51,9 @@ public class Cenario {
 			player.x += cena.getXOffset();
 			player.y += cena.getYOffset();
 
+
 			player.draw();
+			pocaoCura.draw();
 
 			for (int i = 0; i < zumbi.length; i++) {
 				zumbi[i].caminho(cena);
@@ -61,6 +66,7 @@ public class Cenario {
 				zumbi[i].morrer();
 				zumbi[i].aparecer(player);
 				controleJogo.contKill(player, zumbi[i]);
+				pocaoCura.aparecer(zumbi[i], player);
 			}
 
 			boss.setKillSensitive(player.getKills());
@@ -74,6 +80,7 @@ public class Cenario {
 			boss.aparecer(player);
 			player.atirar(janela, cena, teclado, boss, player);
 			player.morrer();
+			pocaoCura.curar(player);
 			controleJogo.displayKills(janela, player);
 			controleJogo.displayEnergy(janela, player);
 			controleJogo.gameOver(player);

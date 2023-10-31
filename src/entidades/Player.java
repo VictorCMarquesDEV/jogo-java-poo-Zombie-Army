@@ -2,6 +2,8 @@ package entidades;
 
 import jplay.URL;
 import jplay.Window;
+import combate.PocaoCura;
+import controle.ControleColisao;
 import controle.ControleTiro;
 import jplay.Keyboard;
 import jplay.Scene;
@@ -33,8 +35,24 @@ public class Player extends Entidade implements Jogador {
 		}
 		tiros.run(zumbi, player, cena);
 	}
+	
+	private boolean positionX() {
+		if(this.x > 510 && this.x < 514 && ControleColisao.colisao(this, tile) == false) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	private boolean positionY() {
+		if(this.y > 382 && this.y < 386 && ControleColisao.colisao(this, tile) == false) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 
-	public void controlar(Window janela, Keyboard teclado) {
+	public void controlar(Window janela, Keyboard teclado, PocaoCura pocao) {
 
 		if (teclado.keyDown(Keyboard.LEFT_KEY)) {
 			if (this.x > 0) {
@@ -42,30 +60,44 @@ public class Player extends Entidade implements Jogador {
 			}
 			lado = 1;
 			mover(lado);
-
+			if(positionX()) {
+				pocao.x += this.getVelocidade();
+			}
 		}
+		
 		if (teclado.keyDown(Keyboard.RIGHT_KEY)) {
 			if (this.x < janela.getWidth() - 45) {
 				this.x += this.getVelocidade();
 			}
 			lado = 2;
 			mover(lado);
-
+			if(positionX()) {
+				pocao.x -= this.getVelocidade();
+			}
 		}
+		
 		if (teclado.keyDown(Keyboard.UP_KEY)) {
 			if (this.y > 0) {
 				this.y -= this.getVelocidade();
 			}
 			lado = 4;
 			mover(lado);
+			if(positionY()) {
+				pocao.y += this.getVelocidade();
+			}
 		}
+		
 		if (teclado.keyDown(Keyboard.DOWN_KEY)) {
 			if (this.y < janela.getHeight() - 48) {
 				this.y += this.getVelocidade();
 			}
 			lado = 5;
 			mover(lado);
+			if(positionY()) {
+				pocao.y -= this.getVelocidade();
+			}
 		}
+		
 		if (movendo) {
 			update();
 			this.setMovendo(false);
