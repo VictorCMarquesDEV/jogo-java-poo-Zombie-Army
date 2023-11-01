@@ -13,4 +13,13 @@ public class ControleColisao {
 			return false;
 		}
 	}
+	
+	public static boolean colisao(GameObject obj, GameObject obj2) {
+
+		if (obj.collided(obj2)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

@@ -5,6 +5,8 @@ import controle.ControleTiro;
 public class Zumbi extends Inimigo {
 	
 	ControleTiro tiros = new ControleTiro();
+	
+	private int curou = 0;
 
 	public Zumbi(int x, int y, String filename, double life, double ataque) {
 		super(x, y, filename, life, ataque);
@@ -32,11 +34,20 @@ public class Zumbi extends Inimigo {
 		int dx = aleatorioDx.nextInt(-2, 2);
 		int dy = aleatorioDy.nextInt(-2, 2);
 		if (r == 30 && this.life > 0) {
-			this.x = player.x + 50 + p * dx;
-			this.y = player.y + 50 + p * dy;
+			this.x = player.x + 100 + p * dx;
+			this.y = player.y + 100 + p * dy;
 			this.setMovendo(true);
 			this.setVelocidade(0.4);
 			this.setDirecao(3);
 		}
 	}
+
+	public int getCurou() {
+		return curou;
+	}
+
+	public void setCurou(int curou) {
+		this.curou = curou;
+	}
+	
 }

@@ -2,6 +2,8 @@ package entidades;
 
 import jplay.URL;
 import jplay.Window;
+import combate.PocaoCura;
+import controle.ControleColisao;
 import controle.ControleTiro;
 import jplay.Keyboard;
 import jplay.Scene;
@@ -33,7 +35,7 @@ public class Player extends Entidade implements Jogador {
 		}
 		tiros.run(zumbi, player, cena);
 	}
-
+	
 	public void controlar(Window janela, Keyboard teclado) {
 
 		if (teclado.keyDown(Keyboard.LEFT_KEY)) {
@@ -42,35 +44,38 @@ public class Player extends Entidade implements Jogador {
 			}
 			lado = 1;
 			mover(lado);
-
 		}
-		if (teclado.keyDown(Keyboard.RIGHT_KEY)) {
+		
+		else if (teclado.keyDown(Keyboard.RIGHT_KEY)) {
 			if (this.x < janela.getWidth() - 45) {
 				this.x += this.getVelocidade();
 			}
 			lado = 2;
 			mover(lado);
-
 		}
-		if (teclado.keyDown(Keyboard.UP_KEY)) {
+		
+		else if (teclado.keyDown(Keyboard.UP_KEY)) {
 			if (this.y > 0) {
 				this.y -= this.getVelocidade();
 			}
 			lado = 4;
 			mover(lado);
 		}
-		if (teclado.keyDown(Keyboard.DOWN_KEY)) {
+		
+		else if (teclado.keyDown(Keyboard.DOWN_KEY)) {
 			if (this.y < janela.getHeight() - 48) {
 				this.y += this.getVelocidade();
 			}
 			lado = 5;
 			mover(lado);
 		}
+	}
+	
+	public void imovel() {
 		if (movendo) {
 			update();
 			this.setMovendo(false);
 		}
-
 	}
 
 	@Override
