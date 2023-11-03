@@ -31,7 +31,8 @@ public class ControleTiro {
 			tiros.addLast(tiro);
 			
 			if(tiro.collided(inimigo)) {
-				cena.removeOverlay(tiro);
+				tiro.x=10_000_000;
+				tiro.y=10_000_000;
 				inimigo.setLife(inimigo.getLife()-player.getAtaque());
 			}
 		}
@@ -45,7 +46,8 @@ public class ControleTiro {
 			tiros.addLast(tiro);
 			
 			if(tiro.collided(inimigo)) {
-				cena.removeOverlay(tiro);
+				tiro.x=10_000_000;
+				tiro.y=10_000_000;
 				inimigo.setLife(inimigo.getLife()-player.getAtaque());
 			}
 		}
@@ -59,7 +61,8 @@ public class ControleTiro {
 			tiros.addLast(tiro);
 			
 			if(tiro.collided(inimigo)) {
-				cena.removeOverlay(tiro);
+				tiro.x=10_000_000;
+				tiro.y=10_000_000;
 				inimigo.setLife(inimigo.getLife()-player.getAtaque());
 			}
 		}
