@@ -1,5 +1,9 @@
 package combate;
 
+import controle.ControleColisao;
+import entidades.Boss;
+import entidades.Player;
+import entidades.Zumbi;
 import jplay.Sprite;
 import jplay.URL;
 
@@ -56,6 +60,48 @@ public class Projetil extends Sprite {
 		if (movendo) {
 			update();
 			movendo = false;
+		}
+	}
+	
+	public void estatico(Player player) {
+		if(player.getMovendo()) {
+			if(player.x > 510 && player.x < 514 && ControleColisao.colisao(player, player.getTile()) == false) {
+				if(player.getDirecao() == 1) {
+					this.x += player.getVelocidade();
+				} 
+				if(player.getDirecao() == 2) {
+					this.x -= player.getVelocidade();
+				}
+			}
+			if(player.y > 382 && player.y < 386 && ControleColisao.colisao(player, player.getTile()) == false) {
+				if(player.getDirecao() == 4) {
+					this.y += player.getVelocidade();
+				} 
+				if(player.getDirecao() == 5) {
+					this.y -= player.getVelocidade();
+				}
+			}
+		}
+	}
+	
+	public void estatico(Boss player) {
+		if(player.getMovendo()) {
+			if(player.x > 510 && player.x < 514 && ControleColisao.colisao(player, player.getTile()) == false) {
+				if(player.getDirecao() == 1) {
+					this.x += player.getVelocidade();
+				} 
+				if(player.getDirecao() == 2) {
+					this.x -= player.getVelocidade();
+				}
+			}
+			if(player.y > 382 && player.y < 386 && ControleColisao.colisao(player, player.getTile()) == false) {
+				if(player.getDirecao() == 4) {
+					this.y += player.getVelocidade();
+				} 
+				if(player.getDirecao() == 5) {
+					this.y -= player.getVelocidade();
+				}
+			}
 		}
 	}
 }

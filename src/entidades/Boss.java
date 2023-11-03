@@ -1,8 +1,15 @@
 package entidades;
 
+import controle.ControleTiro;
+import jplay.Keyboard;
+import jplay.Scene;
+import jplay.Window;
 
 public class Boss extends Inimigo {
 	
+	long time;
+	long atualTime;
+	ControleTiro tiros = new ControleTiro();
 	private int killSensitive;
 	private int reLife;
 
@@ -48,6 +55,15 @@ public class Boss extends Inimigo {
 			this.setDirecao(3);
 			this.morreu = 1;
 		}
+	}
+	
+	public void atirar(Window janela, Scene cena, Keyboard teclado, Boss zumbi, Player player) {
+		if (time - atualTime >= 5000) {
+			tiros.adicionaTiro(x, y, direcao, cena);
+			atualTime = time;
+		}
+		tiros.run(player, zumbi, cena);
+		time = System.currentTimeMillis();
 	}
 	
 	public void setKillSensitive(int killSensitive){

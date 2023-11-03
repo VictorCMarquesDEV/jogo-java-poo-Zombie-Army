@@ -33,7 +33,7 @@ public class Cenario {
 		for (int i = 0; i < zumbi.length; i++) {
 			zumbi[i] = new Zumbi(30000, 30000, "zumbi.png", 1500, 2);
 		}
-		boss = new Boss(30000, 30000, "boss.png", 6000, 100);
+		boss = new Boss(30000, 30000, "boss.png", 6000, 30);
 		controleJogo = new ControleJogo();
 		this.run();
 
@@ -45,8 +45,7 @@ public class Cenario {
 
 			player.controlar(janela, teclado);
 			pocaoCura.estatico(player);
-			player.imovel();
-			player.caminho(cena);
+			
 
 			cena.moveScene(player);
 
@@ -74,6 +73,7 @@ public class Cenario {
 			boss.setKillSensitive(player.getKills());
 			boss.caminho(cena);
 			boss.perseguir(player.x, player.y);
+			boss.atirar(janela, cena, teclado, boss, player);
 			boss.x += cena.getXOffset();
 			boss.y += cena.getYOffset();
 			boss.draw();
@@ -88,6 +88,8 @@ public class Cenario {
 			controleJogo.gameOver(player);
 			controleJogo.contKill(player, boss);
 			controleJogo.exitGame(janela);
+			player.imovel();
+			player.caminho(cena);
 			janela.update();
 		}
 	}
