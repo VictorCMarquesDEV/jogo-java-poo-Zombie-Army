@@ -1,5 +1,7 @@
 package mapConfig;
 
+import java.util.ArrayList;
+
 import combate.PocaoCura;
 import controle.ControleJogo;
 import entidades.Boss;
@@ -17,7 +19,7 @@ public class Cenario {
 	protected Scene cena;
 	protected Player player;
 	protected Keyboard teclado;
-	protected Zumbi zumbi[];
+	protected ArrayList<Zumbi> zumbi = new ArrayList<Zumbi>();
 	protected Boss boss;
 	protected ControleJogo controleJogo;
 	protected PocaoCura pocaoCura;
@@ -28,10 +30,9 @@ public class Cenario {
 		teclado = janela.getKeyboard();
 		cena.loadFromFile(URL.scenario(filename));
 		player = new Player(640, 350, 250);
-		zumbi = new Zumbi[30];
 		pocaoCura = new PocaoCura("pocao.png",1,650,370);
-		for (int i = 0; i < zumbi.length; i++) {
-			zumbi[i] = new Zumbi(30000, 30000, "zumbi.png", 1500, 2);
+		for (int i = 0; i < 30; i++) {
+			zumbi.add(new Zumbi(30000, 30000, "zumbi.png", 1500, 2));
 		}
 		boss = new Boss(30000, 30000, "boss.png", 6000, 30);
 		controleJogo = new ControleJogo();
@@ -56,18 +57,18 @@ public class Cenario {
 			player.draw();
 			pocaoCura.draw();
 
-			for (int i = 0; i < zumbi.length; i++) {
-				zumbi[i].caminho(cena);
-				zumbi[i].perseguir(player.x, player.y);
-				zumbi[i].x += cena.getXOffset();
-				zumbi[i].y += cena.getYOffset();
-				zumbi[i].draw();
-				player.atirar(janela, cena, teclado, zumbi[i], player);
-				zumbi[i].atacar(player);
-				zumbi[i].morrer();
-				zumbi[i].aparecer(player);
-				controleJogo.contKill(player, zumbi[i]);
-				pocaoCura.aparecer(zumbi[i], player);
+			for (int i = 0; i < 30; i++) {
+				zumbi.get(i).caminho(cena);
+				zumbi.get(i).perseguir(player.x, player.y);
+				zumbi.get(i).x += cena.getXOffset();
+				zumbi.get(i).y += cena.getYOffset();
+				zumbi.get(i).draw();
+				player.atirar(janela, cena, teclado, zumbi.get(i), player);
+				zumbi.get(i).atacar(player);
+				zumbi.get(i).morrer();
+				zumbi.get(i).aparecer(player);
+				controleJogo.contKill(player, zumbi.get(i));
+				pocaoCura.aparecer(zumbi.get(i), player);
 			}
 
 			boss.setKillSensitive(player.getKills());
