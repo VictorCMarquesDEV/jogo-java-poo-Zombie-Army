@@ -4,7 +4,7 @@ import jplay.GameImage;
 import jplay.Keyboard;
 import jplay.URL;
 import jplay.Window;
-import mapConfig.Cenario;
+import mapConfig.SystemFacade;
 
 public class Main {
 
@@ -14,12 +14,16 @@ public class Main {
 		Keyboard teclado = janela.getKeyboard();
 		
 		while(true) {
-			plano.draw();
-			janela.update();
-			
-			if(teclado.keyDown(Keyboard.ENTER_KEY)) {
-				new Cenario(janela, "Cenario1.scn", "musicaFundo.wav");
-			} 
+			try {
+				plano.draw();
+				janela.update();
+				
+				if(teclado.keyDown(Keyboard.ENTER_KEY)) {
+					new SystemFacade(janela, "Cenario1.scn", "musicaFundo.wav");
+				} 
+			}catch(Exception e) {
+				System.out.println("FATAL ERROR!!");
+			}
 		}
 	}
 }
