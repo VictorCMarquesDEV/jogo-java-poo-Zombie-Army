@@ -26,14 +26,14 @@ public class Player extends Entidade implements Jogador {
 		if (teclado.keyDown(Keyboard.A_KEY)) {
 			tiros.adicionaTiro(x, y, direcao, cena);
 		}
-		tiros.run(zumbi, player, cena);
+		tiros.run(zumbi, player);
 	}
 
 	public void atirar(Window janela, Scene cena, Keyboard teclado, Boss zumbi, Player player) {
 		if (teclado.keyDown(Keyboard.A_KEY)) {
 			tiros.adicionaTiro(x, y, direcao, cena);
 		}
-		tiros.run(zumbi, player, cena);
+		tiros.run(zumbi, player);
 	}
 	
 	public void controlar(Window janela, Keyboard teclado) {

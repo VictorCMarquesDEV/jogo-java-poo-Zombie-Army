@@ -23,7 +23,7 @@ public class ControleTiro {
 		somDisparo();
 	}
 
-	public void run(Zumbi inimigo, Player player, Scene cena) {
+	public void run(Zumbi inimigo, Player player) {
 		for (int i = 0; i < tiros.size(); i++) {
 			Projetil tiro = tiros.removeFirst();
 			tiro.mover();
@@ -38,7 +38,7 @@ public class ControleTiro {
 		}
 	}
 	
-	public void run(Boss inimigo, Player player, Scene cena) {
+	public void run(Boss inimigo, Player player) {
 		for (int i = 0; i < tiros.size(); i++) {
 			Projetil tiro = tiros.removeFirst();
 			tiro.mover();
@@ -53,7 +53,7 @@ public class ControleTiro {
 		}
 	}
 	
-	public void run(Player inimigo, Boss player, Scene cena) {
+	public void run(Player inimigo, Boss player) {
 		for (int i = 0; i < tiros.size(); i++) {
 			Projetil tiro = tiros.removeFirst();
 			tiro.mover();

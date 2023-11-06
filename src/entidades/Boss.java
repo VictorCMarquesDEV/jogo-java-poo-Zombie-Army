@@ -62,7 +62,7 @@ public class Boss extends Inimigo {
 			tiros.adicionaTiro(x, y, direcao, cena);
 			atualTime = time;
 		}
-		tiros.run(player, zumbi, cena);
+		tiros.run(player, zumbi);
 		time = System.currentTimeMillis();
 	}
 	
