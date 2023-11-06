@@ -23,6 +23,7 @@ public class Cenario {
 	protected Boss boss;
 	protected ControleJogo controleJogo;
 	protected PocaoCura pocaoCura;
+	private final int QTTZUMBI = 30;
 
 	public Cenario(Window window, String filename, String filenameM) {
 		janela = window;
@@ -31,7 +32,7 @@ public class Cenario {
 		cena.loadFromFile(URL.scenario(filename));
 		player = new Player(640, 350, 250);
 		pocaoCura = new PocaoCura("pocao.png",1,650,370);
-		for (int i = 0; i < 30; i++) {
+		for (int i = 0; i < QTTZUMBI; i++) {
 			zumbi.add(new Zumbi(30000, 30000, "zumbi.png", 1500, 2));
 		}
 		boss = new Boss(30000, 30000, "boss.png", 6000, 30);
@@ -57,18 +58,18 @@ public class Cenario {
 			player.draw();
 			pocaoCura.draw();
 
-			for (int i = 0; i < 30; i++) {
-				zumbi.get(i).caminho(cena);
-				zumbi.get(i).perseguir(player.x, player.y);
-				zumbi.get(i).x += cena.getXOffset();
-				zumbi.get(i).y += cena.getYOffset();
-				zumbi.get(i).draw();
-				player.atirar(janela, cena, teclado, zumbi.get(i), player);
-				zumbi.get(i).atacar(player);
-				zumbi.get(i).morrer();
-				zumbi.get(i).aparecer(player);
-				controleJogo.contKill(player, zumbi.get(i));
-				pocaoCura.aparecer(zumbi.get(i), player);
+			for (Zumbi i : zumbi) {
+				i.caminho(cena);
+				i.perseguir(player.x, player.y);
+				i.x += cena.getXOffset();
+				i.y += cena.getYOffset();
+				i.draw();
+				player.atirar(janela, cena, teclado, i, player);
+				i.atacar(player);
+				i.morrer();
+				i.aparecer(player);
+				controleJogo.contKill(player, i);
+				pocaoCura.aparecer(i, player);
 			}
 
 			boss.setKillSensitive(player.getKills());
