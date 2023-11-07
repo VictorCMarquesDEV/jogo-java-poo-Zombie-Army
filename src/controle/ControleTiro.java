@@ -17,9 +17,13 @@ public class ControleTiro {
 	public Projetil tiro;
 
 	public void adicionaTiro(double x, double y, int caminho, Scene cena) {
-		tiro = new Projetil(x, y, caminho);
-		tiros.addFirst(tiro);
-		cena.addOverlay(tiro);
+		try {
+			tiro = new Projetil(x, y, caminho);
+			tiros.addFirst(tiro);
+			cena.addOverlay(tiro);
+		}catch(Exception e) {
+			System.out.println("OUT OF MEMORY");
+		}
 		somDisparo();
 	}
 
