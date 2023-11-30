@@ -19,7 +19,7 @@ public class Main {
 				janela.update();
 				
 				if(teclado.keyDown(Keyboard.ENTER_KEY)) {
-					new SystemFacade(janela, "Cenario3.scn", "musicaFundo.wav");
+					new SystemFacade(janela, "Cenario1.scn", "musicaFundo.wav");
 				} 
 			}catch(Exception e) {
 				System.out.println("FATAL ERROR!!");
