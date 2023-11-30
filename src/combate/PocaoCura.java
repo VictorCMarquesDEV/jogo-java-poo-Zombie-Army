@@ -12,6 +12,7 @@ import jplay.URL;
 public class PocaoCura extends Sprite{
 	
 	private double cura = 50;
+	private double heber;
 	
 	Random aleatorioDx = new Random();
 	Random aleatorioDy = new Random();
