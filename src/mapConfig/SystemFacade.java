@@ -1,5 +1,4 @@
 package mapConfig;
-
 import java.util.ArrayList;
 
 import combate.PocaoCura;
@@ -25,8 +24,8 @@ public class SystemFacade {
 	protected PocaoCura pocaoCura;
 	private final int QTTZUMBI = 30;
 
-	public SystemFacade(Window window, String filename, String filenameM) {
-		janela = window;
+	public SystemFacade(java.awt.Window janela2, String filename, String filenameM) {
+		janela = (Window) janela2;
 		cena = new Scene();
 		teclado = janela.getKeyboard();
 		cena.loadFromFile(URL.scenario(filename));
@@ -41,7 +40,7 @@ public class SystemFacade {
 
 		Som.play(filenameM);
 	}
-	
+
 	protected void run() {
 		while (true) {
 

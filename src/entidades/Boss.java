@@ -1,5 +1,6 @@
 package entidades;
 
+import controle.ControleCenario;
 import controle.ControleTiro;
 import jplay.Keyboard;
 import jplay.Scene;
@@ -54,6 +55,12 @@ public class Boss extends Inimigo {
 			this.setVelocidade(0.6);
 			this.setDirecao(3);
 			this.morreu = 1;
+		}
+	}
+	
+	public void morra(ControleCenario controleCenario) {
+		if(this.getLife() <= 0) {
+			controleCenario.bossMorreu();
 		}
 	}
 	
