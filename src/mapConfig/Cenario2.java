@@ -35,7 +35,7 @@ public class Cenario2 {
 		for (int i = 0; i < QTTZUMBI; i++) {
 			zumbi.add(new Zumbi(30000, 30000, "zumbi.png", 1500, 0));
 		}
-		boss = new Boss(30000, 30000, "boss.png", 60, 0);
+		boss = new Boss(30000, 30000, "boss.png", 6000, 0);
 		controleJogo = new ControleJogo();
 		this.run();
 
