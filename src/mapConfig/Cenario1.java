@@ -1,4 +1,5 @@
 package mapConfig;
+
 import java.util.ArrayList;
 
 import combate.PocaoCura;
@@ -12,7 +13,7 @@ import jplay.Scene;
 import jplay.URL;
 import jplay.Window;
 
-public class SystemFacade {
+public class Cenario1 {
 
 	protected Window janela;
 	protected Scene cena;
@@ -24,17 +25,17 @@ public class SystemFacade {
 	protected PocaoCura pocaoCura;
 	private final int QTTZUMBI = 30;
 
-	public SystemFacade(java.awt.Window janela2, String filename, String filenameM) {
+	public Cenario1(java.awt.Window janela2, String filename, String filenameM) {
 		janela = (Window) janela2;
 		cena = new Scene();
 		teclado = janela.getKeyboard();
 		cena.loadFromFile(URL.scenario(filename));
 		player = new Player(640, 350, 250);
-		pocaoCura = new PocaoCura("pocao.png",1,650,370);
+		pocaoCura = new PocaoCura("pocao.png", 1, 650, 370);
 		for (int i = 0; i < QTTZUMBI; i++) {
-			zumbi.add(new Zumbi(30000, 30000, "zumbi.png", 1500, 2));
+			zumbi.add(new Zumbi(30000, 30000, "zumbi.png", 1500, 0));
 		}
-		boss = new Boss(30000, 30000, "boss.png", 6000, 30);
+		boss = new Boss(30000, 30000, "boss.png", 6000, 0);
 		controleJogo = new ControleJogo();
 		this.run();
 
@@ -44,15 +45,14 @@ public class SystemFacade {
 	protected void run() {
 		while (true) {
 
+			
 			player.controlar(janela, teclado);
 			pocaoCura.estatico(player);
-			
 
 			cena.moveScene(player);
 
 			player.x += cena.getXOffset();
 			player.y += cena.getYOffset();
-
 
 			player.draw();
 			pocaoCura.draw();
@@ -80,6 +80,7 @@ public class SystemFacade {
 			boss.draw();
 			boss.atacar(player);
 			boss.morrer();
+			controleCenario();
 			boss.aparecer(player);
 			player.atirar(janela, cena, teclado, boss, player);
 			player.morrer();
@@ -92,6 +93,12 @@ public class SystemFacade {
 			player.imovel();
 			player.caminho(cena);
 			janela.update();
+		}
+	}
+	
+	private void controleCenario() {
+		if(boss.getLife() <= 0) {
+			new Cenario2(janela, "Cenario2.scn", "musicafundo.wav");
 		}
 	}
 }

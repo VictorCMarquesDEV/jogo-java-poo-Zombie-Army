@@ -1,6 +1,5 @@
 package entidades;
 
-import controle.ControleCenario;
 import controle.ControleTiro;
 import jplay.Keyboard;
 import jplay.Scene;
@@ -13,6 +12,7 @@ public class Boss extends Inimigo {
 	ControleTiro tiros = new ControleTiro();
 	private int killSensitive;
 	private int reLife;
+	private int inGame = 0;
 
 	public Boss(int x, int y, String filename, double life, double ataque) {
 		super(x, y, filename, life, ataque);
@@ -31,7 +31,7 @@ public class Boss extends Inimigo {
 			this.x = 10_000_000;
 			this.setDirecao(0);
 			this.setMovendo(false);
-			this.setLife(reLife);
+			this.setLife(0);
 			this.morreu = 0;
 		}
 	}
@@ -49,23 +49,19 @@ public class Boss extends Inimigo {
 		int dx = aleatorioDx.nextInt(-2, 2);
 		int dy = aleatorioDy.nextInt(-2, 2);
 		if (this.morreu != 1 && killSensitive % 5 == 0 && killSensitive != 0) {
+			this.setLife(reLife);
 			this.x = player.x + 50 + p * dx;
 			this.y = player.y + 50 + p * dy;
 			this.setMovendo(true);
 			this.setVelocidade(0.6);
 			this.setDirecao(3);
 			this.morreu = 1;
-		}
-	}
-	
-	public void morra(ControleCenario controleCenario) {
-		if(this.getLife() <= 0) {
-			controleCenario.bossMorreu();
+			this.inGame = 1;
 		}
 	}
 	
 	public void atirar(Window janela, Scene cena, Keyboard teclado, Boss zumbi, Player player) {
-		if (time - atualTime >= 5000) {
+		if (time - atualTime >= 5000 && inGame == 1 ) {
 			tiros.adicionaTiro(x, y, direcao, cena);
 			atualTime = time;
 		}

@@ -10,7 +10,7 @@ public abstract class Inimigo extends Entidade implements IA{
 	Random aleatorioP = new Random();
 	Random aleatorioDx = new Random();
 	Random aleatorioDy = new Random();
-	protected int morreu = 0;
+	public int morreu = 0;
 	
 	public Inimigo(int x, int y, String filename, double life, double ataque) {
 		super(URL.sprite(filename), 16, life);
