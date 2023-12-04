@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import combate.Projetil;
 import entidades.Boss;
 import entidades.Player;
-//import entidades.Entidade;
 import entidades.Zumbi;
 import jplay.Scene;
 import jplay.Sound;

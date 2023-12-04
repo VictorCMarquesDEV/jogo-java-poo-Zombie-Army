@@ -1,6 +1,5 @@
 package entidades;
 
-import combate.PocaoCura;
 import jplay.Keyboard;
 import jplay.Scene;
 import jplay.Window;

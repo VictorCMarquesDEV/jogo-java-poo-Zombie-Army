@@ -28,29 +28,29 @@ public class ControleJogo {
 		}
 	}
 
-	public void contKill(Player player, Boss boss) {
+	public void contKill(Player player, Boss boss) { 
 		if (boss.getLife() <= 0 && boss.getMorreu() == 0) {
 			player.setKills(player.getKills() + 1);
 			boss.setMorreu(1);
 		}
 	}
 	
-	public void contKill(Player player, Zumbi zumbi) {
+	public void contKill(Player player, Zumbi zumbi) { 
 		if (zumbi.getLife() <= 0 && zumbi.getMorreu() == 0) {
 			player.setKills(player.getKills() + 1);
 			zumbi.setMorreu(1);
 		}
 	}
 	
-	public void displayEnergy(Window janela, Player player) {
+	public void displayEnergy(Window janela, Player player) { 
 		janela.drawText("Vida: " + player.getLife(), 50, 50, c, f);
 	}
 
-	public void displayKills(Window janela, Player player) {
+	public void displayKills(Window janela, Player player) { 
 		janela.drawText("Mortos: " + player.getKills(), 300, 50, c, f);
 	}
 	
-	public void exitGame(Window janela) {
+	public void exitGame(Window janela) { 
 		Keyboard teclado = janela.getKeyboard();
 		if(death == true && teclado.keyDown(Keyboard.M_KEY)){
 			System.exit(0);

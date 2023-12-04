@@ -2,8 +2,6 @@ package entidades;
 
 import jplay.URL;
 import jplay.Window;
-import combate.PocaoCura;
-import controle.ControleColisao;
 import controle.ControleTiro;
 import jplay.Keyboard;
 import jplay.Scene;

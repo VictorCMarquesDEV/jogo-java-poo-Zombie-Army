@@ -3,7 +3,6 @@ package combate;
 import controle.ControleColisao;
 import entidades.Boss;
 import entidades.Player;
-import entidades.Zumbi;
 import jplay.Sprite;
 import jplay.URL;
 
