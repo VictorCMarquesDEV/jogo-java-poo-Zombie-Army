@@ -4,7 +4,7 @@ import jplay.GameImage;
 import jplay.Keyboard;
 import jplay.URL;
 import jplay.Window;
-import mapConfig.Cenario1;
+import mapConfig.Facade;
 
 public class Main {
 
@@ -19,7 +19,7 @@ public class Main {
 					janela.update();
 		
 					if(teclado.keyDown(Keyboard.ENTER_KEY)) {
-						new Cenario1(janela, "Cenario1.scn", "musicafundo.wav");
+						new Facade(janela, "Cenario1.scn", "musicafundo.wav");
 					}
 					
 				}catch(Exception e) {

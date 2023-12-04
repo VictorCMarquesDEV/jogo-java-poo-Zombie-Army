@@ -13,7 +13,7 @@ import jplay.Scene;
 import jplay.URL;
 import jplay.Window;
 
-public class Cenario1 {
+public class Facade {
 
 	protected Window janela;
 	protected Scene cena;
@@ -25,7 +25,7 @@ public class Cenario1 {
 	protected PocaoCura pocaoCura;
 	private final int QTTZUMBI = 30;
 
-	public Cenario1(java.awt.Window janela2, String filename, String filenameM) {
+	public Facade(java.awt.Window janela2, String filename, String filenameM) {
 		janela = (Window) janela2;
 		cena = new Scene();
 		teclado = janela.getKeyboard();

@@ -97,7 +97,7 @@ public class Cenario3 {
 	
 	private void controleCenario() {
 		if(boss.getLife() <= 0) {
-			new Cenario1(janela, "Cenario1.scn", "musicafundo.wav");
+			new Facade(janela, "Cenario1.scn", "musicafundo.wav");
 		}
 	}
 }
