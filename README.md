@@ -16,15 +16,15 @@ Projeto realizado para disciplina de Programação Orientada à Objetos. <br/>
 <br>
 
 <p align="center">
-  <img alt="Imagem mapa 1" src="github/img1.png" width="100%">
+  <img alt="Imagem mapa 1" src="github/img1.jpeg" width="100%">
 </p>
 
 <p align="center">
-  <img alt="Imagem mapa 2" src="github/img2.png" width="100%">
+  <img alt="Imagem mapa 2" src="github/img2.jpeg" width="100%">
 </p>
 
 <p align="center">
-  <img alt="Imagem mapa 3" src="github/img3.png" width="100%">
+  <img alt="Imagem mapa 3" src="github/img3.jpeg" width="100%">
 </p>
 
 ---
